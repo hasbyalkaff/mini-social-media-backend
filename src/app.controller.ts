@@ -6,6 +6,9 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
   glo=[];
 
+  //----------------------
+  // Algorithm Test No. 2
+  //----------------------
   conv_arr(_array){
     var leng = _array.length;
     for(let i=0; i<leng; i++){
@@ -15,6 +18,16 @@ export class AppController {
     }
   }
 
+  @Post()
+  get(@Body() _array: []){
+    this.glo = [];
+    this.conv_arr(_array);
+    return this.glo;
+  }
+
+  //----------------------
+  // Algorithm Test No. 3
+  //----------------------
   pecah_digit(_input){
     var str = _input.toString();
     var leng = str.length;
@@ -30,13 +43,6 @@ export class AppController {
   getHello(@Param() params){
     // return this.appService.getHello();
     return this.pecah_digit(params.number);
-  }
-
-  @Post()
-  get(@Body() _array: []){
-    this.glo = [];
-    this.conv_arr(_array);
-    return this.glo;
   }
   
 }
