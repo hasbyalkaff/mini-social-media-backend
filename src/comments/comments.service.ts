@@ -9,12 +9,21 @@ export class CommentsService {
 
     async getComments(_content_id: number): Promise<CommentEntity[]> {
         return await this.commentRepository.find({
-            select: ["created_at", "user_id", "comment"],
-            where: [{ "content_id": _content_id}]
+            select: {
+                created_at: true,
+                comment: true,
+                user: {
+                    username: true
+                }
+            },
+            where: [{ "id": _content_id}],
+            relations: {
+                user: true
+            }
         });
     }
 
     async updateComment(comment: CommentEntity) {
-        this.commentRepository.save(comment);
+        this.commentRepository.insert(comment);
     }
 }

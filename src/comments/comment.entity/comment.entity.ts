@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { ContentEntity } from 'src/contents/content.entity/content.entity';
+import { UserEntity } from 'src/users/user.entity/user.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
 @Entity()
 export class CommentEntity {
@@ -6,14 +8,14 @@ export class CommentEntity {
     id: number;
 
     @Column()
-    user_id: number;
-
-    @Column()
-    content_id: number;
-
-    @Column()
     comment: string;
 
     @Column('date')
     created_at: Date;
+
+    @ManyToOne(type => UserEntity, user => user.comment)
+    user: UserEntity;
+
+    @ManyToOne(type => ContentEntity, content => content.comment)
+    content: ContentEntity;
 }

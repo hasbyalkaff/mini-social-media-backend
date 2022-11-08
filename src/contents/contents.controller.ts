@@ -7,10 +7,6 @@ export class ContentsController {
     constructor(private service: ContentsService) {}
 
     // get all - insert new - find (id)
-    @Get()
-    getAll(@Param() params){
-        return this.service.getContents();
-    }
 
     @Put()
     update(@Body() content: ContentEntity){
@@ -20,5 +16,10 @@ export class ContentsController {
     @Get(':id')
     get(@Param() params){
         return this.service.getOneContent(params.id);
+    }
+
+    @Get()
+    getAll(){
+        return this.service.getAllContents();
     }
 }

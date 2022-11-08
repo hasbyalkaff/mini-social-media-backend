@@ -11,7 +11,7 @@ export class CommentsController {
         return this.service.getComments(params.content_id);
     }
 
-    @Put()
+    @Post()
     update(@Body() comment: CommentEntity){
         return this.service.updateComment(comment);
     }

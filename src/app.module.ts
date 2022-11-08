@@ -23,7 +23,7 @@ import { CommentsModule } from './comments/comments.module';
   ContentsModule,
   CommentsModule
   ],
-  controllers: [AppController],
+  // controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
